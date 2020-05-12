@@ -1,15 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS DAY1</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <script src="mian2.js" />
-    </body>
+    <div class="elements">
+        <h1>Currency Converter HCMC</h1>
+        <h4>Best rates garanteed </br> No Commision</h4>
+        <div class="container">
+            <input type="number" id="amountInput" />
+            <label for="cars">From:</label>
+            <select id="fromList">
+                <option value="USD">USD</option>
+                <option value="VND">VND</option>
+                <option value="EUR">EUR</option>
+                <option value="KRW">KRW</option>
+
+
+
+            </select>
+
+
+            <label for="cars">To:</label>
+            <select id="toList">
+                <option value="USD">USD</option>
+                <option value="VND">VND</option>
+                <option value="EUR">EUR</option>
+                <option value="KRW">KRW</option>
+
+            </select>
+            <button id="convertButton" onclick="convertnow()">Convert!</button>
+            <div id="resultArea">Result will be here</div>
+        </div>
+    </div>
+    <script src="mian2.js"></script>
+
+</body>
+
 
 </html>

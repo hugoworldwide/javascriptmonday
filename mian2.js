@@ -1,57 +1,48 @@
-const exchangeRate = 23208;
-console.log("we here ")
-let currencySelector = prompt("Which Currency do you want to change ?");
-let amountToChange = prompt("How much do you want to change ?")
-let result = 0
+const USD = {
+    VND: 23388.85,
+    EUR: 0.92,
+    KRW: 1223.56,
+    USD: 1,
+    JPY: 107.64,
+    CNY: 7.10
 
-
-function vndToUsd(amountVnd) {
-    let convertedAmount = (amountVnd / exchangeRate).toFixed(2)
-    return convertedAmount
 }
 
-function usdToVnd(amountUsd) {
-    console.log("user typed amount", amountUsd)
-    let convertedAmount = (amountUsd * exchangeRate).toFixed(2)
-    return convertedAmount
+
+
+
+let from = document.getElementById("fromList").value // tag from HTML
+let to = document.getElementById("toList").value // tag from HTML
+let amount = document.getElementById("amountInput").value // tag from HTML
+let result = document.getElementById("resultArea"); // tag from HTML
+let convertedAmount = 0 // use for get converted value from function 
+let formatamount = ''
+console.log(USD[from])
+
+
+function convertnow() {
+
+    let from = document.getElementById("fromList").value// tag from HTML
+    let to = document.getElementById("toList").value// tag from HTML
+    let amount = document.getElementById("amountInput").value
+
+
+    console.log(from, to, amount)
+    convertedamount = USD[to] / USD[from] * amount
+    let finalResult = formatCurrency(to.toString(), convertedamount)
+
+    console.log(finalResult)
+    resultArea.innerHTML = `Result:   ${amount} ${from} to ${to} is ${finalResult}`
 }
 
-//milestone 6
-
-function bilateralConvertion() {
-    if (typeof (parseInt(amountToChange)) !== "number") { alert("Must enter the number") }
-    else {
-        if (currencySelector === "VND") {
-            result = usdToVnd(parseInt(amountToChange))
-
-        } else if (currencySelector === "USD") {
-            result = vndToUsd(parseInt(amountToChange))
-
-        }
-        alert("your total amount is ", result)
-
-    }
-
-    bilateralConvertion();
 
 
+function formatCurrency(type, value) {
+    const formatter = new Intl.NumberFormat(type, {
+        currency: type,
+        style: "currency"
+    });
+    return formatter.format(value);
+}
 
-    //Milstone 7
-
-    function formatCurrency(type, value) {
-        const formatter = new Intl.NumberFormat(type, {
-            currency: type,
-            style: "currency"
-        });
-        return formatter.format(value);
-    }
-
-    const vietnam = "5,800,175"
-    console.log(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(number));
-
-    const japan = "26,984"
-    console.log(new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(number));
-
-    const usa = "215.51"
-    console.log(new Intl.NumberFormat('us-US', { style: 'currency', currency: 'USD' }).format(number));
 
